@@ -1,5 +1,4 @@
 import time
-import winsound
 
 def timer():
     minutes = int(input("Enter the number of minutes: "))
@@ -10,16 +9,13 @@ def timer():
         time.sleep(1)
         seconds -= 1
     print("Time's up!")
-    winsound.Beep(1000, 1000)  # beep sound for 1 second
 
 def stopwatch():
     start_time = time.time()
-    while True:
-        elapsed_time = time.time() - start_time
-        m, s = divmod(elapsed_time, 60)
-        h, m = divmod(m, 60)
-        print(f"Elapsed time: {h:02d}:{m:02d}:{s:02f}", end="\r")
-        time.sleep(0.1)
+    input("Press Enter to stop the stopwatch")
+    end_time = time.time()
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time:.2f} seconds")
 
 # Main program
 print("Choose an option:")
@@ -32,7 +28,6 @@ while True:
         timer()
         break
     elif choice == "2":
-        print("Press Enter to stop the stopwatch")
         stopwatch()
         break
     else:
